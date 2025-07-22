@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h1 class="heading">Temperature Converter</h1>
+      <div class="temp-container">
+        <label for="celsius">Celsius:</label>
+        <input @change ="calculate($event)" type="number" name="celsius" id="celsius" placeholder="Enter Temperature" class="input" v-model.number="form.celsius" />
+      </div>
+      <div class="temp-container">
+        <label for="fahrenheit">Fahrenheit:</label>
+        <input @change ="calculate($event)" type="number" name="fahrenheit" id="fahrenheit" placeholder="Enter Temperature" class="input" v-model.number="form.fahrenheit" />
+      </div>
+      <div class="temp-container">
+        <label for="kelvin">Kelvin:</label>
+        <input @change ="calculate($event)" type="number" name="kelvin" id="kelvin" placeholder="Enter Temperature" class="input" v-model.number="form.kelvin" />
+      </div>
+    </div>
+    <script type="module">
+      import { createApp, reactive } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
+      createApp({
+        setup() {
+          const form = reactive({
+            celsius: 0,
+            fahrenheit: 0,
+            kelvin: 0,
+          });
+
+          const calculate = (event) => {
+           if (event.target.id == 'celsius'){
+            form.fahrenheit = parseFloat(((form.celsius * 9/5) + 32).toFixed(2));
+            form.kelvin = parseFloat((form.celsius + 273.15).toFixed(2));
+           } else if (event.target.id == 'fahrenheit'){
+            form.celsius = parseFloat(((form.fahrenheit - 32) * 5/9).toFixed(2));
+            form.kelvin = parseFloat((((form.fahrenheit - 32) * 5/9) + 273.15).toFixed(2));
+           } else if (event.target.id == 'kelvin'){
+            form.celsius = parseFloat((form.kelvin - 273.15).toFixed(2));
+            form.fahrenheit = parseFloat((((form.kelvin - 273.15) * 9/5) + 32).toFixed(2));
+           } 
+          };
+
+          return {
+            form,
+            calculate,
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
