@@ -12,15 +12,15 @@
       <h1 class="heading">Temperature Converter</h1>
       <div class="temp-container">
         <label for="celsius">Celsius:</label>
-        <input @change ="calculate($event)" type="number" name="celsius" id="celsius" placeholder="Enter Temperature" class="input" v-model.number="form.celsius" />
+        <input @change ="calculate" type="number" name="celsius" id="celsius" placeholder="Enter Temperature" class="input" v-model.number="form.celsius" />
       </div>
       <div class="temp-container">
         <label for="fahrenheit">Fahrenheit:</label>
-        <input @change ="calculate($event)" type="number" name="fahrenheit" id="fahrenheit" placeholder="Enter Temperature" class="input" v-model.number="form.fahrenheit" />
+        <input @change ="calculate" type="number" name="fahrenheit" id="fahrenheit" placeholder="Enter Temperature" class="input" v-model.number="form.fahrenheit" />
       </div>
       <div class="temp-container">
         <label for="kelvin">Kelvin:</label>
-        <input @change ="calculate($event)" type="number" name="kelvin" id="kelvin" placeholder="Enter Temperature" class="input" v-model.number="form.kelvin" />
+        <input @change ="calculate" type="number" name="kelvin" id="kelvin" placeholder="Enter Temperature" class="input" v-model.number="form.kelvin" />
       </div>
     </div>
     <script type="module">
